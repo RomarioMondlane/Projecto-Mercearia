@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,8 +33,9 @@ public class User implements Serializable{
 	@NotEmpty
 	@JsonIgnore
 	public String password;
-	@NotEmpty
+	
 	public boolean isadmin;
+	 private String file;
 	
 	public User() {}
 	
@@ -49,14 +51,18 @@ public class User implements Serializable{
 	}
 
 	
-	public User(@NotBlank String nome, @NotBlank String username, @NotEmpty String password,
-			@NotEmpty boolean isAdmin) {
-		
+
+
+	public User(@NotBlank String nome, @NotBlank String username, @NotEmpty String password, boolean isadmin,
+			String file) {
+		super();
 		this.nome = nome;
 		this.username = username;
 		this.password = password;
-		this.isadmin = isAdmin;
+		this.isadmin = isadmin;
+		this.file = file;
 	}
+
 
 	public int getCodigo() {
 		return codigo;
@@ -90,11 +96,29 @@ public class User implements Serializable{
 	}
 
 
-	@Override
-	public String toString() {
-		return "User [codigo=" + codigo + ", nome=" + nome + ", username=" + username + ", password=" + password
-				+ ", isadmin=" + isadmin + "]";
+	public boolean isIsadmin() {
+		return isadmin;
 	}
+
+
+	public void setIsadmin(boolean isadmin) {
+		this.isadmin = isadmin;
+	}
+
+
+	public String getFile() {
+		return file;
+	}
+
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+
+	
+
+
 	
 	
 }

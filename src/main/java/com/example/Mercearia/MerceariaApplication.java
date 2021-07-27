@@ -20,7 +20,7 @@ public class MerceariaApplication {
 		//SpringApplication.run(MerceariaApplication.class, args);
 		
 		SpringApplication app=new SpringApplication(MerceariaApplication.class);
-		app.setDefaultProperties(Collections.singletonMap("server.port", "7000"));
+		app.setDefaultProperties(Collections.singletonMap("server.port", "7979"));
 	app.run(args);
 	}
 

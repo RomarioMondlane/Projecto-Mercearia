@@ -23,6 +23,8 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int codigo;
 	@NotBlank 
+	public String categoria;
+	@NotBlank 
 	@Column(unique = true)
 	public String nome;
 	@NotNull 
@@ -32,9 +34,10 @@ public class Produto implements Serializable {
 	
 	
 	
-	public Produto( String nome, float preco, int quantidade) {
+	
+	public Produto(@NotBlank String categoria, @NotBlank String nome, float preco, int quantidade) {
 		
-		//this.codigo = codigo;
+		this.categoria = categoria;
 		this.nome = nome;
 		this.preco = preco;
 		this.quantidade = quantidade;
@@ -63,6 +66,12 @@ public class Produto implements Serializable {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 	
 	
