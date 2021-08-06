@@ -46,7 +46,7 @@ public class DetalhesUser implements UserDetailsService{
 		UserPrincipal p=new UserPrincipal(u);
 		List<GrantedAuthority> rolesUser= AuthorityUtils.createAuthorityList("User");
 		List<GrantedAuthority> rolesAdmin= AuthorityUtils.createAuthorityList("Admin");
-		return new org.springframework.security.core.userdetails.User(p.getUsername(),p.getPassword(),u.isAdmin()?rolesAdmin:rolesUser);
+		return new org.springframework.security.core.userdetails.User(p.getUsername(),p.getPassword(),u.isadmin?rolesAdmin:rolesUser);
 	 
 	}
 

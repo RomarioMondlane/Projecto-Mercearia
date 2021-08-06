@@ -31,50 +31,116 @@ public class Produto implements Serializable {
 	public float preco;
 	@NotNull
 	public int quantidade;
+
+	@Column(name = "picByte", length = 40000000)
+	private byte[] picByte;
+	
+	public String descricao;
 	
 	
-	
-	
-	public Produto(@NotBlank String categoria, @NotBlank String nome, float preco, int quantidade) {
-		
+
+	public Produto() {
+		super();
+	}
+
+
+
+	public Produto(@NotBlank String categoria, @NotBlank String nome, float preco, int quantidade, byte[] picByte,String descricao) {
+		super();
 		this.categoria = categoria;
 		this.nome = nome;
 		this.preco = preco;
 		this.quantidade = quantidade;
-	}
-	public Produto() {}
+		this.picByte = picByte;
+		this.descricao=descricao;	}
+
+
+
 	public int getCodigo() {
 		return codigo;
 	}
+
+
+
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public float getPreco() {
-		return preco;
-	}
-	public void setPreco(float preco) {
-		this.preco = preco;
-	}
-	public int getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+
+
+
 	public String getCategoria() {
 		return categoria;
 	}
+
+
+
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+	public float getPreco() {
+		return preco;
+	}
+
+
+
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}
+
+
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+
+
+	public byte[] getPicByte() {
+		return picByte;
+	}
+
+
+
+	public void setPicByte(byte[] picByte) {
+		this.picByte = picByte;
+	}
+
+
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	
 	
+	
+		
 	
 }

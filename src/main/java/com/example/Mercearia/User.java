@@ -3,6 +3,7 @@ package com.example.Mercearia;
 
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -23,6 +25,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	public int codigo;
 	@NotBlank
 	@Column(unique = true)
@@ -33,35 +36,49 @@ public class User implements Serializable{
 	@NotEmpty
 	@JsonIgnore
 	public String password;
+	@Column(name = "picByte", length = 100000000)
+	private byte[] picByte;
+	
 	
 	public boolean isadmin;
-	 private String file;
 	
 	public User() {}
 	
 	
-	public User(int codigo, @NotBlank String nome, @NotBlank String username, @NotEmpty String password,
-			@NotEmpty boolean isAdmin) {
-		
+	
+
+	public User(int codigo, @NotBlank String nome, @NotBlank String username, @NotEmpty String password, byte[] picByte,
+			boolean isadmin) {
+		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.username = username;
 		this.password = password;
-		this.isadmin = isAdmin;
+		this.picByte = picByte;
+		this.isadmin = isadmin;
+		
 	}
-
-	
-
-
-	public User(@NotBlank String nome, @NotBlank String username, @NotEmpty String password, boolean isadmin,
-			String file) {
+	public User( @NotBlank String nome, @NotBlank String username, @NotEmpty String password, byte[] picByte,
+			boolean isadmin) {
+		super();
+		this.nome = nome;
+		this.username = username;
+		this.password = password;
+		this.picByte = picByte;
+		this.isadmin = isadmin;
+		
+	}
+	public User( @NotBlank String nome, @NotBlank String username, @NotEmpty String password,
+			boolean isadmin) {
 		super();
 		this.nome = nome;
 		this.username = username;
 		this.password = password;
 		this.isadmin = isadmin;
-		this.file = file;
-	}
+		}
+
+
+
 
 
 	public int getCodigo() {
@@ -106,13 +123,26 @@ public class User implements Serializable{
 	}
 
 
-	public String getFile() {
-		return file;
+
+
+	public byte[] getPicByte() {
+		return picByte;
 	}
 
 
-	public void setFile(String file) {
-		this.file = file;
+
+
+	public void setPicByte(byte[] picByte) {
+		this.picByte = picByte;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "User [codigo=" + codigo + ", nome=" + nome + ", username=" + username + ", password=" + password
+				+ ", picByte=" + Arrays.toString(picByte) + ", isadmin=" + isadmin + "]";
 	}
 
 
